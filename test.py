@@ -1,3 +1,4 @@
+import os
 import subprocess
 from Bio import SeqIO
 from Bio.Seq import Seq
@@ -21,15 +22,7 @@ def merge_fasta_files(input_files, output_file):
     SeqIO.write(records, output_file, "fasta")
     print(f"Les fichiers FASTA d'entrée ont été fusionnés avec succès en {output_file}")
 
-merge_fasta_files(["data/reconstructed_fasta/reconstructed_A_output.fasta",
-                   "data/reconstructed_fasta/reconstructed_B_output.fasta",
-                   "data/reconstructed_fasta/reconstructed_C_output.fasta",
-                   "data/reconstructed_fasta/reconstructed_DPB1_output.fasta",
-                   "data/reconstructed_fasta/reconstructed_DQB1_output.fasta",
-                   "data/reconstructed_fasta/reconstructed_DRB1_output.fasta",
-                   "data/reconstructed_fasta/reconstructed_DRB3_output.fasta",
-                   "data/reconstructed_fasta/reconstructed_DRB4_output.fasta",
-                   "data/reconstructed_fasta/reconstructed_DRB5_output.fasta",
-                   "data/reconstructed_fasta/reconstructed_DPA1_output.fasta",
-                   "data/reconstructed_fasta/reconstructed_DQA1_output.fasta"],
-                  "data/hla_flanked_10kb.fasta")
+# Merge file in combined_inputs
+combined_input_files = os.listdir("data/merged_fasta")
+combined_input_files = [f"data/merged_fasta/{file}" for file in combined_input_files]
+merge_fasta_files(combined_input_files,"data/hla_flanked_10kb.fasta")
