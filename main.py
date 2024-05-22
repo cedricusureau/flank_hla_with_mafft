@@ -4,6 +4,7 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio import AlignIO
 
+
 def run_mafft(powershell_script, input_file, output_file, auto=True, clustalout=True, inputorder=True):
     """
     Exécute MAFFT en utilisant un script PowerShell.
@@ -37,6 +38,7 @@ def run_mafft(powershell_script, input_file, output_file, auto=True, clustalout=
             print(f"MAFFT exécuté avec succès. La sortie est enregistrée dans {output_file}")
         except subprocess.CalledProcessError as e:
             print(f"Erreur lors de l'exécution de MAFFT: {e.stderr}")
+
 
 def prepare_and_run_mafft(parameters, powershell_script):
     for locus, (transcript_id, orientation) in parameters.items():
@@ -80,6 +82,7 @@ def prepare_and_run_mafft(parameters, powershell_script):
         # Reconstituer les séquences FASTA à partir du fichier Clustal aligné
         merge_sequences(cleaned_clustal_file, merged_fasta_file, transcript_id, imgt_headers)
 
+
 def remove_header_lines(input_file, output_file):
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         lines = infile.readlines()
@@ -87,12 +90,14 @@ def remove_header_lines(input_file, output_file):
         for line in lines[3:]:
             outfile.write(line)
 
+
 def format_fasta_sequence(sequence, line_length=80):
     """
     Formate une séquence en majuscules avec des retours à la ligne tous les `line_length` caractères.
     """
     sequence = sequence.upper()
     return '\n'.join(sequence[i:i + line_length] for i in range(0, len(sequence), line_length))
+
 
 def align_to_reference(input_file, output_file, reference_id, headers):
     try:
@@ -124,6 +129,7 @@ def align_to_reference(input_file, output_file, reference_id, headers):
 
     except Exception as e:
         print(f"Erreur lors de la lecture du fichier Clustal: {e}")
+
 
 def merge_sequences(input_file, output_file, reference_id, headers):
     try:
@@ -158,6 +164,7 @@ def merge_sequences(input_file, output_file, reference_id, headers):
 
     except Exception as e:
         print(f"Erreur lors de la lecture du fichier Clustal: {e}")
+
 
 if __name__ == "__main__":
     parameters = {
