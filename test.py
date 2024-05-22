@@ -25,4 +25,4 @@ def merge_fasta_files(input_files, output_file):
 # Merge file in combined_inputs
 combined_input_files = os.listdir("data/merged_fasta")
 combined_input_files = [f"data/merged_fasta/{file}" for file in combined_input_files]
-merge_fasta_files(combined_input_files,"data/hla_flanked_10kb.fasta")
+merge_fasta_files(combined_input_files,"result.fasta")
