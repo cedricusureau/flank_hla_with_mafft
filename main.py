@@ -167,11 +167,13 @@ def merge_sequences(input_file, output_file, reference_id, headers):
 
 
 if __name__ == "__main__":
+    # parameters = {
+    #     "A": ["ENST00000706902", "forward"],
+    #     "B": ["ENST00000481849", "reverse"],
+    #     "C": ["ENST00000466892", "reverse"],
+    #     "DRB1": ["ENST00000696610", "reverse"],
+    #
     parameters = {
-        "A": ["ENST00000706902", "forward"],
-        "B": ["ENST00000481849", "reverse"],
-        "C": ["ENST00000466892", "reverse"],
-        "DRB1": ["ENST00000696610", "reverse"],
         "DRB3": ["ENST00000383126", "reverse"],
         "DRB4": ["ENST00000411959", "reverse"],
         "DRB5": ["ENST00000374975", "reverse"],
